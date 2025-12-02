@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animated Zen Style Popup</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      /* --- Modal Styling and Animations --- */
+
+      .modal-overlay {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-out, background-color 0.3s ease-out,
+          visibility 0.3s;
+      }
+
+      .modal-overlay.is-open {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.9);
+        visibility: visible;
+        display: flex;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 5px;
+        border-radius: 0.4rem;
+        width: 90%;
+        text-align: left;
+        position: relative;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        transform: scale(0.98);
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        font-family: "Georgia", serif;
+        line-height: 1.7;
+
+        max-height: 95vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modal-overlay.is-open .modal-content {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .article-scroll {
+        /* max-height: 75vh; */
+        overflow-y: auto;
+        padding-right: 20px;
+        /* padding: 20px; */
+        /* background-color: red; */
+        padding: 0 15rem;
+      }
+
+      .article-title {
+        font-size: 2.4rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #111;
+      }
+
+      .article-subtitle {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 25px;
+      }
+
+      .article-byline {
+        font-size: 0.95rem;
+        color: #777;
+        margin-bottom: 35px;
+        font-style: italic;
+      }
+
+      .article-body p {
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+        color: #222;
+      }
+
+      .article-image {
+        width: 100%;
+        border-radius: 3px;
+        margin: 25px 0;
+      }
+
+      .close-btn {
+        cursor: pointer;
+        font-size: 20px;
+        /* padding: 10px; */
+        /* background-color: red; */
+      }
+
+      .article-link {
+        cursor: pointer;
+        font-size: 20px;
+        text-decoration: underline;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Example article links -->
+    <div class="article-link" data-article="hydrogen">
+      New Hydrogen vs Electric Cars
+    </div>
+
+    <div class="article-link" data-article="aiArt">
+      The Downsides of AI Artistry
+    </div>
+
+    <div class="article-link" data-article="vcFunding">
+      Is VC Funding Drying Up?
+    </div>
+
+    <!-- The Zen Modal Overlay -->
+    <div id="zen-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+
+        <div class="article-scroll">
+          <h1 class="article-title"></h1>
+          <h2 class="article-subtitle"></h2>
+          <div class="article-byline"></div>
+          <img class="article-image" />
+          <div class="article-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var modal = document.getElementById("zen-modal");
+      var closeBtn = document.querySelector(".close-btn");
+
+      // Elements inside modal to update
+      var titleEl = document.querySelector(".article-title");
+      var subtitleEl = document.querySelector(".article-subtitle");
+      var bylineEl = document.querySelector(".article-byline");
+      var imageEl = document.querySelector(".article-image");
+      var bodyEl = document.querySelector(".article-body");
+
+      // ------ ARTICLE DATA ------
+      const articles = {
+        hydrogen: {
+          title: "Hydrogen vs Electric Cars: The 2025 Showdown",
+          subtitle:
+            "Why the future of green transportation is now a two-horse race.",
+          byline: "By Jane Smith — Published Nov 28, 2025",
+          image: "https://via.placeholder.com/800x400?text=Hydrogen+Cars",
+          body: `
+            <p>Hydrogen fuel cell vehicles are receiving renewed attention as automakers search for alternatives to traditional lithium-ion batteries...</p>
+            <p>Supporters argue hydrogen fills fast and emits only water vapor. Critics point to infrastructure challenges...</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
+    rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
+    quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
+    at odit iure voluptatum laudantium illum aliquam modi. Consectetur debitis
+    rerum saepe, adipisci assumenda quae rem eos numquam incidunt unde id soluta
+    at nisi cum voluptatibus consequuntur. Dolorum tempore consectetur ut neque
+    repellendus! Minima magni quasi voluptate, accusamus ex animi optio
+    molestias provident facilis ullam at ipsa quae labore rerum in vel tempore
+    porro, nesciunt iure cupiditate esse soluta voluptas? Molestias vel soluta
+    minima ex nulla</p>
+    
+    <p>repellat earum? Commodi minima quod blanditiis accusamus
+    iure nemo ab adipisci deleniti libero quo amet facere natus at voluptatem,
+    dignissimos aperiam. Quasi quos aspernatur, alias nam architecto expedita ab
+    et iste. Illo facilis veritatis consequatur sequi ab exercitationem ipsa
+    minus vero, sit incidunt pariatur itaque, eligendi delectus debitis placeat
+    repellat aspernatur. Ea amet molestias laudantium similique voluptates
+    mollitia, hic corporis ipsa eos debitis deleniti ad nemo quam alias, natus
+    aliquid reprehenderit id ullam dolor sit architecto eligendi tempore nulla.
+    Totam quidem doloribus quibusdam id cupiditate vero, in vitae deleniti optio
+    voluptatem eveniet ex ipsa iusto, nobis repellat dignissimos voluptas cum
+    veniam ea inventore?
+    </p>
+          `,
+        },
+
+        aiArt: {
+          title: "The Downsides of AI Artistry",
+          subtitle: "Why rapid automation is reshaping creative industries.",
+          byline: "By Alex Turner — Published Nov 20, 2025",
+          image: "https://via.placeholder.com/800x400?text=AI+Art",
+          body: `
+            <p>AI tools now generate art in seconds, but artists say it comes with a cost...</p>
+            <p>Questions around copyright, originality, and job displacement continue to rise...</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
+    rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
+    quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
+    at odit iure voluptatum laudantium illum aliquam modi. Consectetur debitis
+    rerum saepe, adipisci assumenda quae rem eos numquam incidunt unde id soluta
+    at nisi cum voluptatibus consequuntur. Dolorum tempore consectetur ut neque
+    repellendus! Minima magni quasi voluptate, accusamus ex animi optio
+    molestias provident facilis ullam at ipsa quae labore rerum in vel tempore
+    porro, nesciunt iure cupiditate esse soluta voluptas? Molestias vel soluta
+    minima ex nulla</p>
+    
+    <p>repellat earum? Commodi minima quod blanditiis accusamus
+    iure nemo ab adipisci deleniti libero quo amet facere natus at voluptatem,
+    dignissimos aperiam. Quasi quos aspernatur, alias nam architecto expedita ab
+    et iste. Illo facilis veritatis consequatur sequi ab exercitationem ipsa
+    minus vero, sit incidunt pariatur itaque, eligendi delectus debitis placeat
+    repellat aspernatur. Ea amet molestias laudantium similique voluptates
+    mollitia, hic corporis ipsa eos debitis deleniti ad nemo quam alias, natus
+    aliquid reprehenderit id ullam dolor sit architecto eligendi tempore nulla.
+    Totam quidem doloribus quibusdam id cupiditate vero, in vitae deleniti optio
+    voluptatem eveniet ex ipsa iusto, nobis repellat dignissimos voluptas cum
+    veniam ea inventore?
+    </p>
+            
+          `,
+        },
+
+        vcFunding: {
+          title: "Is VC Funding Drying Up?",
+          subtitle: "A look at the shifting landscape of tech investment.",
+          byline: "By Sarah Chen — Published Nov 15, 2025",
+          image: "https://via.placeholder.com/800x400?text=VC+Funding",
+          body: `
+            <p>After years of explosive growth, venture capital markets are showing signs of contraction...</p>
+            <p>Higher interest rates and investor caution have slowed the pace of new deals...</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
+    rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
+    quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
+    at odit iure voluptatum laudantium illum aliquam modi. Consectetur debitis
+    rerum saepe, adipisci assumenda quae rem eos numquam incidunt unde id soluta
+    at nisi cum voluptatibus consequuntur. Dolorum tempore consectetur ut neque
+    repellendus! Minima magni quasi voluptate, accusamus ex animi optio
+    molestias provident facilis ullam at ipsa quae labore rerum in vel tempore
+    porro, nesciunt iure cupiditate esse soluta voluptas? Molestias vel soluta
+    minima ex nulla</p>
+    
+    <p>repellat earum? Commodi minima quod blanditiis accusamus
+    iure nemo ab adipisci deleniti libero quo amet facere natus at voluptatem,
+    dignissimos aperiam. Quasi quos aspernatur, alias nam architecto expedita ab
+    et iste. Illo facilis veritatis consequatur sequi ab exercitationem ipsa
+    minus vero, sit incidunt pariatur itaque, eligendi delectus debitis placeat
+    repellat aspernatur. Ea amet molestias laudantium similique voluptates
+    mollitia, hic corporis ipsa eos debitis deleniti ad nemo quam alias, natus
+    aliquid reprehenderit id ullam dolor sit architecto eligendi tempore nulla.
+    Totam quidem doloribus quibusdam id cupiditate vero, in vitae deleniti optio
+    voluptatem eveniet ex ipsa iusto, nobis repellat dignissimos voluptas cum
+    veniam ea inventore?
+    </p>
+          `,
+        },
+      };
+
+      // ------ OPEN ARTICLE HANDLER ------
+      document.querySelectorAll(".article-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          const key = link.dataset.article;
+          const article = articles[key];
+
+          titleEl.innerHTML = article.title;
+          subtitleEl.innerHTML = article.subtitle;
+          bylineEl.innerHTML = article.byline;
+          imageEl.src = article.image;
+          bodyEl.innerHTML = article.body;
+
+          modal.style.display = "flex";
+          setTimeout(() => modal.classList.add("is-open"), 10);
+        });
+      });
+
+      // ------ CLOSE MODAL ------
+      function closeModal() {
+        modal.classList.remove("is-open");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+
+      closeBtn.onclick = closeModal;
+
+      window.onclick = function (event) {
+        if (event.target == modal) closeModal();
+      };
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.classList.contains("is-open"))
+          closeModal();
+      });
+    </script>
+  </body>
+</html>

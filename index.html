@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/effe0ae4aa.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | News homepage</title>
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <img src="./assets/images/logo.svg" alt="logo" class="logo" />
+        <ul class="nav-links">
+          <li>Home</li>
+          <li>New</li>
+          <li>Popular</li>
+          <li>Trending</li>
+          <li>Categories</li>
+        </ul>
+        <img src="./assets/images/icon-menu.svg" class="menu" alt="" />
+      </nav>
+
+      <main>
+        <div class="main-container">
+          <div class="main-blog">
+            <picture>
+              <source media="(max-width:800px)"
+              srcset="./assets/images/image-web-3-mobile.jpg" /`>
+              <img src="./assets/images/image-web-3-desktop.jpg" alt="web3" />
+            </picture>
+            <div class="blog-info">
+              <h1 class="blog-title">
+                Lorem ipsum dolor sit amet consectetur.
+              </h1>
+              <div class="blog-read">
+                <p class="blog-content">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dignissimos aperiam est dicta, totam magnam recusandae nobis
+                  voluptatibus quas impedit voluptatum eum ducimus repellat
+                  ipsum animi. Saepe, vero. Rerum, veniam reprehenderit.
+                </p>
+                <button class="open-popup-btn">Read more</button>
+              </div>
+            </div>
+          </div>
+          <div class="new">
+            <div class="new-container">
+              <h2 class="header">New</h2>
+              <div class="new-blogs">
+                <div class="new-blog">
+                  <h3 class="new-title article-link" data-article="hydrogen">
+                    Voice Cloning Out of Control: Artists Say Their Identities
+                    Are Being Hijacked
+                  </h3>
+                  <p class="new-content">
+                    Unauthorized voice replicas are spreading across streaming
+                    platforms faster than current laws can react.
+                  </p>
+                </div>
+                <div class="new-blog">
+                  <h3 class="new-title article-link" data-article="aiArt">
+                    Copyright on the Brink: Why Current Law Can’t Keep Up With
+                    AI Music
+                  </h3>
+                  <p class="new-content">
+                    Decades-old copyright rules are failing to protect artists
+                    as AI models freely train on their songs without consent.
+                  </p>
+                </div>
+                <div class="new-blog">
+                  <h3 class="new-title article-link" data-article="vcFunding">
+                    Congress Faces Pressure to Regulate AI Music Platforms
+                  </h3>
+                  <p class="new-content">
+                    Lawmakers are being urged to introduce new federal
+                    protections requiring consent, transparency, and
+                    accountability from AI developers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="top-blogs">
+            <div class="top-blog">
+              <img src="./assets/images/image-retro-pcs.jpg" alt="" />
+              <div class="top-info">
+                <h2 class="num">01</h2>
+                <h3 class="top-title open-popup-btn">
+                  Innovation Outpacing Cultural Safety
+                </h3>
+                <p class="top-content">
+                  The U.S.’s market-first approach to AI policy has led to rapid
+                  innovation—and equally rapid exploitation.
+                </p>
+              </div>
+            </div>
+            <div class="top-blog">
+              <img src="./assets/images/image-top-laptops.jpg" alt="" />
+              <div class="top-info">
+                <h2 class="num">02</h2>
+                <h3 class="top-title open-popup-btn">
+                  Streaming Sites hosting Unauthorized AI Tracks
+                </h3>
+                <p class="top-content">
+                  Platforms like Spotify and YouTube struggle to detect and
+                  block AI-generated songs mimicking famous artists.
+                </p>
+              </div>
+            </div>
+            <div class="top-blog">
+              <img src="./assets/images/image-gaming-growth.jpg" alt="" />
+              <div class="top-info">
+                <h2 class="num">03</h2>
+                <h3 class="top-title open-popup-btn">
+                  A National Registry for AI Content?
+                </h3>
+                <p class="top-content">
+                  Researchers argue that a centralized database could help
+                  enforce consent-based laws.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div id="zen-modal" class="modal-overlay">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+
+        <div class="article-scroll">
+          <h1 class="article-title"></h1>
+          <h2 class="article-subtitle"></h2>
+          <div class="article-byline"></div>
+          <img class="article-image" />
+          <div class="article-body"></div>
+          <br />
+          <div class="article-footer">
+            <button>Share full article</button>
+            <button><i class="fa-solid fa-share"></i></button>
+            <button><i class="fa-solid fa-bookmark"></i></button>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+    <script src="Script.js"></script>
+  </body>
+</html>
