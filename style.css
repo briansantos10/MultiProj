@@ -39,13 +39,14 @@ ul {
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 3rem 0;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
 }
 
 .nav-links {
@@ -69,6 +70,18 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   max-height: 750px;
+}
+
+.logo {
+  font-family: NewsReader;
+  font-size: 3rem;
+}
+
+picture {
+  background-color: var(--Soft-red);
+  display: block;
+  width: 800px;
+  height: 400px;
 }
 
 .main-blog {

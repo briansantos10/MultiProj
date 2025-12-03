@@ -11,13 +11,12 @@ var bodyEl = document.querySelector(".article-body");
 // ------ ARTICLE DATA ------
 const articles = {
   hydrogen: {
-    title: "Hydrogen vs Electric Cars: The 2025 Showdown",
-    subtitle: "Why the future of green transportation is now a two-horse race.",
+    title:
+      "Voice Cloning Out of Control: Artists Say Their Identities Are Being Hijacked ",
+    subtitle: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
     byline: "By Jane Smith — Published Nov 28, 2025",
     image: "https://via.placeholder.com/800x400?text=Hydrogen+Cars",
     body: `
-            <p>Hydrogen fuel cell vehicles are receiving renewed attention as automakers search for alternatives to traditional lithium-ion batteries...</p>
-            <p>Supporters argue hydrogen fills fast and emits only water vapor. Critics point to infrastructure challenges...</p>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
     rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
     quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
@@ -45,14 +44,13 @@ const articles = {
   },
 
   aiArt: {
-    title: "The Downsides of AI Artistry",
-    subtitle: "Why rapid automation is reshaping creative industries.",
+    title:
+      "Copyright on the Brink: Why Current Law Can’t Keep Up With AI Music",
+    subtitle: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     byline: "By Alex Turner — Published Nov 20, 2025",
     image: "https://via.placeholder.com/800x400?text=AI+Art",
     body: `
-            <p>AI tools now generate art in seconds, but artists say it comes with a cost...</p>
-            <p>Questions around copyright, originality, and job displacement continue to rise...</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
+           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
     rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
     quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
     at odit iure voluptatum laudantium illum aliquam modi. Consectetur debitis
@@ -80,13 +78,11 @@ const articles = {
   },
 
   vcFunding: {
-    title: "Is VC Funding Drying Up?",
-    subtitle: "A look at the shifting landscape of tech investment.",
+    title: "Congress Faces Pressure to Regulate AI Music Platforms ",
+    subtitle: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     byline: "By Sarah Chen — Published Nov 15, 2025",
     image: "https://via.placeholder.com/800x400?text=VC+Funding",
     body: `
-            <p>After years of explosive growth, venture capital markets are showing signs of contraction...</p>
-            <p>Higher interest rates and investor caution have slowed the pace of new deals...</p>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum, pariatur
     rem? Excepturi quasi ullam laboriosam! Ipsum reiciendis molestiae eos, qui
     quaerat tempora quam nemo dolor consequuntur sapiente laborum amet sed quas
