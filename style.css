@@ -289,6 +289,14 @@ picture {
   }
 }
 
+
+
+.top-blogs .top-blog .image {
+  background-color: var(--Soft-red);
+  width: 150px;
+  height: 8rem;
+}
+
 /* Styles for popup */
 /* --- Modal Styling and Animations --- */
 .modal-overlay {
