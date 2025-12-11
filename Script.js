@@ -1,7 +1,5 @@
 var modal = document.getElementById("zen-modal");
 var closeBtn = document.querySelector(".close-btn");
-
-// Elements inside modal to update
 var titleEl = document.querySelector(".article-title");
 var subtitleEl = document.querySelector(".article-subtitle");
 var bylineEl = document.querySelector(".article-byline");
@@ -9,7 +7,6 @@ var imageEl = document.querySelector(".article-image");
 var bodyEl = document.querySelector(".article-body");
 var imageCreditEl = document.querySelector(".article-image-credit");
 
-// ------ ARTICLE DATA ------
 const articles = {
   protectArtists: {
     imageCredit: {
@@ -257,7 +254,6 @@ This ensures the system does not rely on unpredictable federal budgets and can u
   },
 };
 
-// ------ OPEN ARTICLE HANDLER ------
 document.querySelectorAll(".article-link").forEach((link) => {
   link.addEventListener("click", () => {
     const key = link.dataset.article;
@@ -269,7 +265,6 @@ document.querySelectorAll(".article-link").forEach((link) => {
     imageEl.src = article.image;
     imageEl.alt = article.imageAlt || "Article image";
 
-    // Add image credit if it exists
     if (article.imageCredit) {
       imageCreditEl.innerHTML = `
         Photo by
@@ -278,7 +273,7 @@ document.querySelectorAll(".article-link").forEach((link) => {
         <a href="${article.imageCredit.photoUrl}">Unsplash</a>
       `;
     } else {
-      imageCreditEl.innerHTML = ""; // Clear if no credit
+      imageCreditEl.innerHTML = "";
     }
 
     bodyEl.innerHTML = article.body;
@@ -288,7 +283,6 @@ document.querySelectorAll(".article-link").forEach((link) => {
   });
 });
 
-// ------ CLOSE MODAL ------
 function closeModal() {
   modal.classList.remove("is-open");
   setTimeout(() => {

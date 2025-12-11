@@ -56,6 +56,13 @@ nav {
   margin-bottom: 2rem;
 }
 
+.logos {
+  display: flex;
+  /* align-items: end; */
+  flex-direction: column;
+  text-align: left;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -81,6 +88,12 @@ nav {
 .logo {
   font-family: NewsReader;
   font-size: 3rem;
+  margin-bottom: -5px;
+}
+
+.logos small {
+  text-transform: lowercase;
+  letter-spacing: -1px;
 }
 
 picture img {
@@ -278,7 +291,6 @@ picture img {
   display: none;
   cursor: pointer;
 }
-
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
