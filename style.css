@@ -39,7 +39,7 @@ ul {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 0;
+  padding: 3rem 2rem;
 }
 
 nav {
@@ -77,11 +77,22 @@ nav {
   font-size: 3rem;
 }
 
-picture {
-  background-color: var(--Soft-red);
+picture img {
   display: block;
   width: 800px;
   height: 400px;
+  object-fit: cover;
+  background-color: var(--Soft-red);
+}
+
+.image-credit {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: right;
+}
+.image-credit a {
+  color: inherit;
+  text-decoration: underline;
 }
 
 .main-blog {
@@ -190,8 +201,9 @@ picture {
   display: flex;
   grid-column: 3 span;
   grid-row: 1 span;
-  gap: 1rem;
+  gap: 0.5rem;
   justify-content: space-between;
+  padding-bottom: 3rem;
 }
 
 .top-blog {
@@ -289,12 +301,13 @@ picture {
   }
 }
 
-
-
 .top-blogs .top-blog .image {
-  background-color: var(--Soft-red);
-  width: 150px;
-  height: 8rem;
+  /* background-color: var(--Soft-red); */
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+  /* overflow: hidden; */
+  object-position: bottom;
 }
 
 /* Styles for popup */
@@ -386,12 +399,12 @@ picture {
   color: var(--Very-dark-blue);
   line-height: 1.6;
   font-weight: 400;
+  margin-top: -1rem;
 }
 
 .article-image {
   width: 100%;
   border-radius: 3px;
-  margin: 25px 0;
 }
 
 .close-btn {
