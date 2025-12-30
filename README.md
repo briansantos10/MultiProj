@@ -3,7 +3,7 @@
 This project is a front-end website that examines how current copyright laws fall short when it comes to AI-generated voice cloning. The site is designed to resemble a modern digital newspaper, using a clean layout and interactive pop-up articles to present information in a clear, engaging way.
 
 **Live site:**  
-https://briansantos10.github.io/MultiProj/
+https://briansantos10.github.io/Debreif/
 
 ---
 
